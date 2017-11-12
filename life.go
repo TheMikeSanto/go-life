@@ -10,16 +10,13 @@ func main() {
   // go func() { messages <- "ping" }()
   // msg := <- messages
   // fmt.Println(msg)
-  size := 20
-  sleepLen := 2 * time.Second
+  size := util.GetNumLines() - 4
+  sleepLen := 1 * time.Second
   util.ClearScreen()
-  doGeneration(size)
-  time.Sleep(sleepLen)
-  doGeneration(size)
-  time.Sleep(sleepLen)
-  doGeneration(size)
-  time.Sleep(sleepLen)
-  doGeneration(size)
+  for true {
+    doGeneration(size)
+    time.Sleep(sleepLen)
+  }
 }
 
 func doGeneration(gridSize int) {
