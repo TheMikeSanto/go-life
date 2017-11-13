@@ -89,7 +89,7 @@ func GetNeighbors(index int, row []bool, nextRow []bool, prevRow []bool) [8]bool
     se = nextRow[index + 1]
   }
 
-  neighbors := [...]bool{nw, n, ne, w, e, sw, s, se} 
+  neighbors := [8]bool{nw, n, ne, w, e, sw, s, se}
   return neighbors
 }
 

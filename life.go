@@ -7,15 +7,15 @@ import (
 )
 
 func main() {
-  size := shell.GetNumLines() - 4
-  startGrid := grid.MakeGrid(size)
+  gridSize := shell.GetNumLines() - 4
   shell.ClearScreen()
+  startGrid := grid.MakeGrid(gridSize)
   DoGeneration(startGrid)
 }
 
 func DoGeneration(aGrid [][]bool) {
   shell.PrintGrid(aGrid)
   newGrid := grid.DetermineNextGen(aGrid)
-  time.Sleep(1 * time.Second)
+  time.Sleep(250 * time.Millisecond)
   DoGeneration(newGrid)
 }

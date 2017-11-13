@@ -7,8 +7,8 @@ import (
   "os/exec"
   "strconv"
 )
-const aliveCell string = "\033[40m  "
-const deadCell  string = "\033[47m  "
+const aliveCell string = "\033[42m  "
+const deadCell  string = "\033[104m  "
 const moveCursor string = "\033[0;0H"
 const termReset  string = "\033[0m"
 const termSpacer string = "\033[49m "
