@@ -7,20 +7,15 @@ import (
 )
 
 func main() {
-  // messages := make(chan string)
-  // go func() { messages <- "ping" }()
-  // msg := <- messages
-  // fmt.Println(msg)
   size := shell.GetNumLines() - 4
-  sleepLen := 1 * time.Second
+  startGrid := grid.MakeGrid(size)
   shell.ClearScreen()
-  for true {
-    doGeneration(size)
-    time.Sleep(sleepLen)
-  }
+  DoGeneration(startGrid)
 }
 
-func doGeneration(gridSize int) {
-  newGrid := grid.MakeGrid(gridSize)
-  grid.PrintGrid(newGrid)
+func DoGeneration(aGrid [][]bool) {
+  grid.PrintGrid(aGrid)
+  newGrid := grid.DetermineNextGen(aGrid)
+  time.Sleep(1 * time.Second)
+  DoGeneration(newGrid)
 }
