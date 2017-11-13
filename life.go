@@ -1,7 +1,8 @@
 package main
 
 import (
-  "./util"
+  "./grid"
+  "./shell"
   "time"
 )
 
@@ -10,9 +11,9 @@ func main() {
   // go func() { messages <- "ping" }()
   // msg := <- messages
   // fmt.Println(msg)
-  size := util.GetNumLines() - 4
+  size := shell.GetNumLines() - 4
   sleepLen := 1 * time.Second
-  util.ClearScreen()
+  shell.ClearScreen()
   for true {
     doGeneration(size)
     time.Sleep(sleepLen)
@@ -20,6 +21,6 @@ func main() {
 }
 
 func doGeneration(gridSize int) {
-  grid := util.MakeGrid(gridSize)
-  util.PrintGrid(grid)
+  newGrid := grid.MakeGrid(gridSize)
+  grid.PrintGrid(newGrid)
 }

@@ -1,4 +1,4 @@
-package util
+package grid
 
 import (
   "bytes"
@@ -6,6 +6,7 @@ import (
   "math/rand"
   "time"
 )
+
 func MakeGrid(size int) [][]bool {
   rand.Seed(time.Now().UTC().UnixNano())
   grid := make([][]bool, size)
@@ -20,21 +21,29 @@ func MakeGrid(size int) [][]bool {
   return grid
 }
 
+const aliveCell string = "\033[40m  "
+const deadCell  string = "\033[47m  "
+const moveCursor string = "\033[0;0H"
+const termReset  string = "\033[0m"
+const termSpacer string = "\033[49m "
 func PrintGrid(grid [][]bool) {
   var buffer bytes.Buffer
-  buffer.WriteString("\033[0;0H\n")
+  buffer.WriteString(moveCursor + "\n")
   for _, row := range grid {
-    buffer.WriteString("\t")
+    buffer.WriteString(termReset)
+    for i := 0; i < 2; i++ {
+      buffer.WriteString(termSpacer)
+    }
     for _, cell := range row {
       if cell {
-        buffer.WriteString("\033[40m  ")
+        buffer.WriteString(aliveCell)
       } else {
-        buffer.WriteString("\033[47m  ")
+        buffer.WriteString(deadCell)
       }
     }
     buffer.WriteString("\n")
   }
 
-  buffer.WriteString("\033[0m\n")
+  buffer.WriteString(termReset + "\n")
   fmt.Printf(buffer.String())
 }
