@@ -14,7 +14,7 @@ func main() {
 }
 
 func DoGeneration(aGrid [][]bool) {
-  grid.PrintGrid(aGrid)
+  shell.PrintGrid(aGrid)
   newGrid := grid.DetermineNextGen(aGrid)
   time.Sleep(1 * time.Second)
   DoGeneration(newGrid)
