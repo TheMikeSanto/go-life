@@ -28,7 +28,6 @@ func ClearScreen() {
   }
 }
 
-
 func PrintGrid(grid [][]bool) {
   var buffer bytes.Buffer
   buffer.WriteString(moveCursor + "\n")
